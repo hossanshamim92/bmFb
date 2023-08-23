@@ -13,8 +13,13 @@ const googleSheetsInstance = google.sheets({
   auth: authClientObject,
 });
 
-async function main(dbTable, sheetNum) {
-  conn.query(`SELECT * FROM ${dbTable}`, async (isQuery, rows) => {
+async function main(dbTable, sheetNum, anotherTab = false) {
+  let sql = `SELECT * FROM ${dbTable}`;
+  if (anotherTab != false) {
+    sql = `SELECT * FROM ${dbTable} UNION SELECT * FROM ${anotherTab}`;
+  }
+
+  conn.query(sql, async (isQuery, rows) => {
     if (isQuery) {
       pushError(`${dbTable} Not Fetcth tabtosheet:7 `, isQuery);
       return;

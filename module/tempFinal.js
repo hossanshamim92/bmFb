@@ -137,57 +137,35 @@ async function fetchSpendingData(
             createdat,
           ];
 
-          let checkValueFinal = [
-            accountName,
-            idAccount,
-            bmName,
-            bmId,
-            totalAmountSpent,
-            spendCap,
-            timezone,
-            status,
-            currency,
-            lineCreditPaymentMethod,
-            nameLineCredit,
-            dateOfSpentStart,
-            dateOfSpentStop,
-            spentOfTheDay,
-          ];
-
           if (moment(dateOfSpentStop, "DD/MM/YYYY").isBefore(twoDaysAgo)) {
-            let checkFinal =
-              "SELECT * FROM `spendinfo_final` WHERE account_name = ? AND id_account = ? AND bm_name = ? AND bm_id = ? AND total_amount_spent = ? AND spend_cap = ? AND timezone = ? AND status = ? AND currency = ? AND line_credit_payment_method = ? AND name_line_credit = ? AND date_of_spent_start = ? AND date_of_spent_stop = ? AND spent_of_the_day = ?";
-            conn.query(
-              checkFinal,
-              checkValueFinal,
-              (finCheckErr, finalResult) => {
-                if (finCheckErr) {
-                  pushError(
-                    "Error checking data spendinfo_final:140: ",
-                    finCheckErr
-                  );
-                  return;
-                }
-
-                if (finalResult.length == 0) {
-                  let insertQuery =
-                    "INSERT INTO `spendinfo_final`(`account_name`, `id_account`, `bm_name`, `bm_id`, `total_amount_spent`, `spend_cap`, `timezone`, `status`, `currency`, `line_credit_payment_method`, `name_line_credit`, `date_of_spent_start`, `date_of_spent_stop`, `spent_of_the_day`, `createdat`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                  conn.query(insertQuery, values, (insertErr) => {
-                    if (insertErr) {
-                      pushError(
-                        "Error inserting data spendinfo_final:156 : ",
-                        insertErr
-                      );
-                      return;
-                    }
-
-                    // console.log(
-                    //   `spendinfo_final inserted for id_account ${idAccount} bmId ${bmId}`
-                    // );
-                  });
-                }
+            let checkFinal = `SELECT * FROM spendinfo_final WHERE account_name = '${accountName}' AND id_account = '${idAccount}' AND bm_name = '${bmName}' AND bm_id = '${bmId}' AND timezone = '${timezone}' AND status = '${status}' AND currency = '${currency}' AND line_credit_payment_method = '${lineCreditPaymentMethod}' AND name_line_credit = '${nameLineCredit}' AND date_of_spent_start = '${dateOfSpentStart}' AND date_of_spent_stop = '${dateOfSpentStop}'`;
+            conn.query(checkFinal, (finCheckErr, finalResult) => {
+              if (finCheckErr) {
+                pushError(
+                  "Error checking data spendinfo_final:140: ",
+                  finCheckErr
+                );
+                return;
               }
-            );
+
+              if (finalResult.length == 0) {
+                let insertQuery =
+                  "INSERT INTO `spendinfo_final`(`account_name`, `id_account`, `bm_name`, `bm_id`, `total_amount_spent`, `spend_cap`, `timezone`, `status`, `currency`, `line_credit_payment_method`, `name_line_credit`, `date_of_spent_start`, `date_of_spent_stop`, `spent_of_the_day`, `createdat`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                conn.query(insertQuery, values, (insertErr) => {
+                  if (insertErr) {
+                    pushError(
+                      "Error inserting data spendinfo_final:156 : ",
+                      insertErr
+                    );
+                    return;
+                  }
+
+                  // console.log(
+                  //   `spendinfo_final inserted for id_account ${idAccount} bmId ${bmId}`
+                  // );
+                });
+              }
+            });
 
             continue;
           } else {
