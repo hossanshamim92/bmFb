@@ -1,6 +1,5 @@
 const { google } = require("googleapis");
-const { bmMangerSheetId } = require("./config");
-const { conn, pushError } = require("./config");
+const { conn, pushError, sheet } = require("./config");
 
 async function main() {
   const auth = new google.auth.GoogleAuth({
@@ -16,8 +15,8 @@ async function main() {
 
   const readData = await googleSheetsInstance.spreadsheets.values.get({
     auth,
-    spreadsheetId: bmMangerSheetId,
-    range: "Sheet1!A:C",
+    spreadsheetId: sheet.id,
+    range: "BMTOKEN!A:C",
   });
 
   if (Object.keys(readData.data.values).length > 0) {

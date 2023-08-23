@@ -18,6 +18,8 @@ conn.connect((err) => {
 module.exports = {
   conn: conn,
   pushError: function (msg, obj = false) {
+    // console.log(msg, obj);
+    // return;
     if (typeof obj === "object") {
       msg = msg + JSON.stringify(obj);
     }
@@ -49,14 +51,10 @@ module.exports = {
       });
     });
   },
-  temp: {
+  sheet: {
     id: "1xCJBAq59ZdlMlF3zFttdQeftfW_fwFWaE_CcfwY89RQ",
-    table: "spendinfo_temp",
+    tabTemp: "spendinfo_temp",
+    tabFinal: "spendinfo_final",
   },
-  final: {
-    id: "1Fwd6sMUF5FY08QfLkz_a3B1bWAfHXfUO5loaeUDz6HM",
-    table: "spendinfo_final",
-  },
-  bmMangerSheetId: "1BzMfsHXiPATFupUc2w0VIJmXXTpEKvWjKxxzm7ZGH-w",
   dataStartDate: "2023-01-01",
 };

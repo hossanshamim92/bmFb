@@ -1,4 +1,4 @@
-const { conn, pushError } = require("./config");
+const { conn, pushError, sheet } = require("./config");
 const { google } = require("googleapis");
 
 // Create the auth for google sheet
@@ -13,7 +13,7 @@ const googleSheetsInstance = google.sheets({
   auth: authClientObject,
 });
 
-async function main(spreadsheetId, dbTable) {
+async function main(dbTable, sheetNum) {
   conn.query(`SELECT * FROM ${dbTable}`, async (isQuery, rows) => {
     if (isQuery) {
       pushError(`${dbTable} Not Fetcth tabtosheet:7 `, isQuery);
@@ -31,14 +31,14 @@ async function main(spreadsheetId, dbTable) {
 
       await googleSheetsInstance.spreadsheets.values.clear({
         auth,
-        spreadsheetId,
-        range: "Sheet1",
+        spreadsheetId: sheet.id,
+        range: sheetNum,
       });
 
       const writeData = googleSheetsInstance.spreadsheets.values.append({
         auth,
-        spreadsheetId,
-        range: "Sheet1",
+        spreadsheetId: sheet.id,
+        range: sheetNum,
         valueInputOption: "RAW", // This interprets the input as user-entered values
         insertDataOption: "INSERT_ROWS", // This inserts the data as new rows
         resource: {
