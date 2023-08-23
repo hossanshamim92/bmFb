@@ -53,6 +53,7 @@ module.exports = {
   },
   sheet: {
     id: "1xCJBAq59ZdlMlF3zFttdQeftfW_fwFWaE_CcfwY89RQ",
+    idBMToken: "1BzMfsHXiPATFupUc2w0VIJmXXTpEKvWjKxxzm7ZGH-w",
     tabTemp: "spendinfo_temp",
     tabFinal: "spendinfo_final",
   },
