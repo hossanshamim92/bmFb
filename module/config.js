@@ -18,8 +18,6 @@ conn.connect((err) => {
 module.exports = {
   conn: conn,
   pushError: function (msg, obj = false) {
-    console.log(msg, obj);
-    return;
     if (typeof obj === "object") {
       msg = msg + JSON.stringify(obj);
     }
