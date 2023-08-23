@@ -5,6 +5,9 @@ const { conn, pushError, temp, final } = require("./module/config");
 const cron = require("node-cron");
 
 async function main() {
+  await businessmanagers.run();
+  return;
+  
   const everyFiftyMins = cron.schedule("*/50 * * * *", () => {
     console.log("*/50 * * * *");
     businessmanagers.run();
