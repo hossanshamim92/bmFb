@@ -12,7 +12,7 @@ async function main() {
   // return;
 
   // // ?? Test to see if business maneger data comes to
-  // await businessmanagers.run();
+  await businessmanagers.run();
   // return;
 
   // // ?? Test facbook endpoints
