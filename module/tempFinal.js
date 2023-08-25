@@ -1,6 +1,8 @@
 const moment = require("moment");
 const { conn, pushError, dataStartDate } = require("./config");
 
+let leftAccountInfo = [];
+
 // Function to fetch account information
 async function fetchAccountInfo(accountId, token) {
   const url = `https://graph.facebook.com/v17.0/${accountId}?fields=account_status,agency_client_declaration,amount_spent,currency,end_advertiser,end_advertiser_name,funding_source,funding_source_details,fb_entity,name,owner,spend_cap,timezone_name,timezone_id&access_token=${token}`;
@@ -10,6 +12,13 @@ async function fetchAccountInfo(accountId, token) {
     const data = await response.json();
     return data;
   } catch (error) {
+    if (error.hasOwnProperty("cause") && error.cause.hasOwnProperty("code")) {
+      if (error.cause.code == "ETIMEDOUT") {
+        leftAccountInfo.push({ accountId, token });
+        fetchAccountInfo(accountId, token);
+        return null;
+      }
+    }
     pushError("Error fetching account information: ", error);
     return null;
   }
@@ -23,7 +32,7 @@ async function fetchBMAdAccounts(bmId, token) {
   let afterCursor = "";
 
   while (hasNextPage) {
-    const url = `https://graph.facebook.com/v17.0/${bmId}/client_ad_accounts?fields=name,account_id&limit=${pageSize}&access_token=${token}&after=${afterCursor}`;
+    const url = `https://graph.facebook.com/v17.0/${bmId}/owned_ad_accounts?fields=name,account_id&limit=${pageSize}&access_token=${token}&after=${afterCursor}`;
 
     try {
       const response = await fetch(url);
@@ -198,6 +207,12 @@ async function fetchSpendingData(
         hasNextPage = false;
       }
     } catch (error) {
+      if (error.hasOwnProperty("cause") && error.cause.hasOwnProperty("code")) {
+        if (error.cause.code == "ETIMEDOUT") {
+          fetchSpendingData(accountId, token, startDate, endDate, otherData);
+          return null;
+        }
+      }
       pushError("Error fetching spending data: ", error);
       return null;
     }
@@ -255,7 +270,7 @@ async function fetchDataAndInsert(getAccountId, token) {
         const accountInfo = await fetchAccountInfo(accountId, token);
 
         if (!accountInfo) {
-          pushError(`Account Info not found for ${accountId}`);
+          // pushError(`Account Info not found for ${accountId}`);
           return;
         }
 
@@ -352,4 +367,4 @@ async function fetchDataAndInsert(getAccountId, token) {
   }
 }
 
-module.exports = { fetchDataAndInsert };
+module.exports = { fetchDataAndInsert, leftAccountInfo };

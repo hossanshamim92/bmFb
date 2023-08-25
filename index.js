@@ -5,17 +5,17 @@ const { conn, pushError, sheet } = require("./module/config");
 let cron = require("node-cron");
 
 async function main() {
-  // // ?? Run the test for cron
-  // cron = {
-  //   schedule: (time, callback) => {
-  //     return {
-  //       start: callback,
-  //     };
-  //   },
-  // };
+   // ?? Run the test for cron
+   cron = {
+     schedule: (time, callback) => {
+       return {
+        start: callback,
+       };
+     },
+  };
 
   // ?? Our main code start here (Test finished)
-  await businessmanagers.run();
+ // await businessmanagers.run();
 
   const everyFiftyMins = cron.schedule("*/50 * * * *", () => {
     console.log("*/50 * * * *");
@@ -59,8 +59,8 @@ async function main() {
   });
 
   // Start the cron job
-  everyFiftyMins.start();
-  everyHour.start();
+  // everyFiftyMins.start();
+  // everyHour.start();
   everyTwoHour.start();
 }
 

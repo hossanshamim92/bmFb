@@ -1,13 +1,3 @@
 {
-    "type": "service_account",
-    "project_id": "solar-century-396411",
-    "private_key_id": "5215d0ff92b52bc58ed796a67ad23663d87a834e",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDoYVs1RiC/mone\naAp79454X7p0AV0RC+fqJKxB0ft9bH9QpOBxhdpPONZpyr6/2zLx1+k21w3vTyZC\nTnb+N1A1sive0HyRAid4cBPjCmRA9Aw71sKzYfpXgLf+wyoHBpOwQw4Hfc44Kd01\nTYTyy4bF0ZcOlqnbz1EBEeWLAFer4A0Jtg1W6ehOdfxegJtvA1tP5wl+JD7w477I\nOMqYRUfVRYRO0HflL8w8L4CpPEoslo8BNtOxgiDFc5GZFVpoo9hSDTeAtJdCyToX\nvEvAYqV9H4FI2mHDXPqR4lHdMfMaC8CZqCToBOxZwPjdPUvItL/4nxrH17FMNkK2\nKmGgOAkBAgMBAAECggEAAJ23de/yaMeiW3BXrMX2fvuz/Rg+1Kt9KSoBOehyW/4E\nZWSWgr6J2mFqchvbPxt36lu57s8JpquFTLI0Dw76+7V199CCMAk7LQ7RAq5VnzV2\nbdcvK3YUSZSaCEcgrqWWESbQW/U5rXzw7PIAavtep1obpiqAl0hYrOHNA74TvW0o\nmJuy15KBmgpLcyEnXAElVRkDZht0NhpIgqV8y4njv30vaIGzSWAATEXk/npJ0tcM\npavowBhsjlpCp97Yvqss0/9oGnfkxzyt0FWlWUE8ZqDFZG/WHMR0Ri8JGgX+yk+U\nW7DmAIG1SLi+QghmSLDaL5NN3bGuzilVP8kt49NAtQKBgQD0hI8eAGLhnMbkmmaV\nmK2dzET/863Ts4V7XAJ8cvsii0oLtA/hEk7WhL4ubrN6kMzVjDGvX4/Zsyl5r+7L\naN11/arvfglxWGNffMYZkx+IDO7VGMqneH4TqfqepLZhXZ8QDaRbA2F7b5/eMpYp\noHoDc0hFkdsRwiLWmwROUApC3QKBgQDzSuM7jgCxK2P3GEze7YhxpQLqymc3ODgo\nRM1pu6u0BHamXXJvqwqyRhO8gBqZpBQmKW0hXdhFMMOilYheWt/OAA4mTo1RMBQB\noUhvd+lgrXNQKdS4TD76l+LcBSPPKsBsX29t8lNzOmNvt1AbBoJgioLAlg2RZz9j\nFzPQRIzCdQKBgQCSWg03Tc/hbe71wRyJiZrRCgR6liWCwr6wOUAbsM5zvJ8TJjEi\n68xYRZd3PzcZszWG06ShbTcyfDPk69Kn2RpElxIKyotoVhkUfCAuCosi6WrCDVau\nqkX8Cw9AiSHIYTrlZuTqvLlKImOzoN+UBsNA8W1ehpByrpofjSUkom+h2QKBgCqe\n7unq+ZIQEOYjuqu/Hw0RpE4vgR96WNQtIXMpbm4N7h889aQ8aZZLkn+OTZqm1OTO\nkxCqWQ3d+hfMbGRjNRvohJIPZtBXRNn4QDFO53KJUE811M8ohEvwOczjlZ9gVO9n\nVKUFM7tW+j6C9aSWYla5TSih4OSdGsyoLuqIZ8RVAoGBAM3f+AOb/e5A4KQYOCm8\n4J0VA0cKyqZ9oj4QQYmRmIkfpMEeROXqRjpG92115SmPjmXMZ/pwFwXsayPeYohp\nHBiMGIhABoHzSz3gyjy0TrUlFNDLEJghTfkO6W0KxamNGI7Q/R6Mtjz/RZyUoWGf\na65puF8i3TVXw/3n0diMDC7K\n-----END PRIVATE KEY-----\n",
-    "client_email": "wlp-521@solar-century-396411.iam.gserviceaccount.com",
-    "client_id": "106700137178381564831",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wlp-521%40solar-century-396411.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
+
 }
