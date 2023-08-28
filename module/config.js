@@ -1,9 +1,9 @@
-const mysql = require("/var/www/wlp-app.com/new_app/node_modules/mysql2");
+const mysql = require("mysql");
 
 let dbConfig = {
-  host: 'localhost',
-  user: 'nello2',
-  password: '',
+  host: "localhost",
+  user: "freelancer_nayem",
+  password: "Shamimhossanshamim",
   database: "bm",
 };
 
@@ -52,8 +52,8 @@ module.exports = {
     });
   },
   sheet: {
-    id: "1JjUxbAomODMK9Joh8hm2TE6AWQ2SDf7tGVZPn_cAS7w",
-    idBMToken: "",
+    id: "1xCJBAq59ZdlMlF3zFttdQeftfW_fwFWaE_CcfwY89RQ",
+    idBMToken: "1JjUxbAomODMK9Joh8hm2TE6AWQ2SDf7tGVZPn_cAS7w",
     tabTemp: "spendinfo_temp",
     tabFinal: "spendinfo_final",
   },

@@ -16,7 +16,7 @@ async function main() {
   const readData = await googleSheetsInstance.spreadsheets.values.get({
     auth,
     spreadsheetId: sheet.idBMToken,
-    range: "token_source!A:C",
+    range: "Sheet1!A:C",
   });
 
   if (Object.keys(readData.data.values).length > 0) {

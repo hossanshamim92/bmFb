@@ -59,9 +59,9 @@ async function main() {
   });
 
   // Start the cron job
-  // everyFiftyMins.start();
+  everyFiftyMins.start();
   // everyHour.start();
-  everyTwoHour.start();
+  // everyTwoHour.start();
 }
 
 main();
