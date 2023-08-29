@@ -15,14 +15,7 @@ async function fetchAccountInfo(accountId, token) {
     if (error.hasOwnProperty("cause") && error.cause.hasOwnProperty("code")) {
       if (error.cause.code == "ETIMEDOUT") {
         leftAccountInfo.push({ accountId, token });
-
-        setTimeout(function () {
-          console.log(
-            `A Timeout Occure and retrying after 4s for accountId ${accountId}`
-          );
-          fetchAccountInfo(accountId, token);
-        }, 4000);
-
+        fetchAccountInfo(accountId, token);
         return null;
       }
     }
@@ -196,9 +189,9 @@ async function fetchSpendingData(
                 return;
               }
 
-              // console.log(
-              //   `spendinfo_temp inserted for id_account ${idAccount} bmId ${bmId}`
-              // );
+              console.log(
+                `spendinfo_temp inserted for id_account ${idAccount} bmId ${bmId}`
+              );
             });
           }
         }
@@ -216,11 +209,6 @@ async function fetchSpendingData(
     } catch (error) {
       if (error.hasOwnProperty("cause") && error.cause.hasOwnProperty("code")) {
         if (error.cause.code == "ETIMEDOUT") {
-          setTimeout(function () {
-            console.log(
-              `A setTimeout Occuring trying after 5s for adAccount ${accountId} `
-            );
-          }, 5000);
           fetchSpendingData(accountId, token, startDate, endDate, otherData);
           return null;
         }
@@ -245,9 +233,6 @@ async function fetchDataAndInsert(getAccountId, token) {
     const bmInfo = await fetchBMAdAccounts(getAccountId, token);
 
     if (bmInfo.length > 0) {
-      console.log(
-        `Ad Account Inserting... can take time bMid ${getAccountId} and AdAccount ${bmInfo.length}`
-      );
       const promises = bmInfo.map(async function (bmAcId) {
         let bmAcInSql =
           "SELECT * FROM `adsaccount` WHERE adAccount = ? AND bmId = ?";
@@ -275,6 +260,8 @@ async function fetchDataAndInsert(getAccountId, token) {
                 pushError("adsaccount: insert ad account error: ", insertErr);
                 return;
               }
+
+              console.log(`${bmAcId.id} is inserted bm -> ${getAccountId}`);
             });
           }
         });
@@ -288,10 +275,10 @@ async function fetchDataAndInsert(getAccountId, token) {
         }
 
         if (accountInfo.hasOwnProperty("error") && accountInfo.error != "") {
-          // pushError(
-          //   "Account Info Not Found. Error: " + accountInfo.error.message,
-          //   accountInfo
-          // );
+          pushError(
+            "Account Info Not Found. Error: " + accountInfo.error.message,
+            accountInfo
+          );
           return;
         }
 
@@ -353,9 +340,6 @@ async function fetchDataAndInsert(getAccountId, token) {
         try {
           await deleteQueryPromise;
 
-          console.log(
-            `Fetching Data for Spending Info Ad Account ${accountId}`
-          );
           const spendingData = await fetchSpendingData(
             accountId,
             token,
