@@ -53,9 +53,13 @@ module.exports = {
   },
   sheet: {
     id: "1xCJBAq59ZdlMlF3zFttdQeftfW_fwFWaE_CcfwY89RQ",
+<<<<<<< HEAD
     idBMToken: "1JjUxbAomODMK9Joh8hm2TE6AWQ2SDf7tGVZPn_cAS7w",
+=======
+    idBMToken: "1BzMfsHXiPATFupUc2w0VIJmXXTpEKvWjKxxzm7ZGH-w",
+>>>>>>> parent of b6c6cd4 (push updated)
     tabTemp: "spendinfo_temp",
     tabFinal: "spendinfo_final",
   },
-  dataStartDate: "2022-01-01",
+  dataStartDate: "2023-01-01",
 };
